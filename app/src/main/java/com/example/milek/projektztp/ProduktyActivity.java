@@ -1,9 +1,12 @@
 package com.example.milek.projektztp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -14,12 +17,19 @@ public class ProduktyActivity extends AppCompatActivity {
 
     List products;
     ListView lvProducts;
+    Button DodajDoKoszyka, ZobaczKoszyk;
+    Produkt product= new Produkt("nazwa", 5, "opis");
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_produkty);
+        DodajDoKoszyka = (Button) findViewById(R.id.buttonDodajDoKoszykZProduktow);
+        ZobaczKoszyk = (Button) findViewById(R.id.buttonKoszykZProduktow);
+        addListenerOnButtonDodajDoKoszyk();
+        addListenerOnButtonZobaczKoszyk();
+
 
         products = new ArrayList();
         ProduktDAO db = new ProduktDAOimpl(this);
@@ -43,16 +53,44 @@ public class ProduktyActivity extends AppCompatActivity {
         lvProducts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Produkt product =(Produkt) lvProducts.getItemAtPosition(position);
+                 product =(Produkt) lvProducts.getItemAtPosition(position);
                 // Toast.makeText(getApplicationContext(),product.getDesc(),Toast.LENGTH_LONG).show();
                 //pole.setText(product.getDesc());
+                DodajDoKoszyka.setEnabled(true);
+
             }
         });
 
-
-
-
-
-
     }
+
+    public void addListenerOnButtonDodajDoKoszyk() {
+
+        final Context context = this;
+        DodajDoKoszyka.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                ArrayList<Produkt> kosz=null;
+                kosz = TwojKoszyk.pobierzKoszyk();
+                kosz.add(product);
+                DodajDoKoszyka.setEnabled(false);
+
+            }
+        });
+    }
+
+    public void addListenerOnButtonZobaczKoszyk() {
+
+        final Context context = this;
+        ZobaczKoszyk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = new Intent(context, KoszykActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+
+
+
 }

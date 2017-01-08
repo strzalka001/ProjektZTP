@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">ProjektZTP</string>
+
+    <string-array name="rodzaje_herbaty">
+        <item>Czarna</item>
+        <item>Zielona</item>
+    </string-array>
+
+    <string-array name="rodzaje_syropu">
+        <item>Brak</item>
+        <item>Czekolada</item>
+        <item>Liczi</item>
+        <item>Mango</item>
+        <item>Wanilia</item>
+    </string-array>
+
+    <string-array name="rodzaje_kulek">
+        <item>Brak</item>
+        <item>Tapioka</item>
+        <item>Truskawka</item>
+    </string-array>
+
 </resources>

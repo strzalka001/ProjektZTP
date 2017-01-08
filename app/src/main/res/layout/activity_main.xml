@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
-        android:id="@+id/button2"
+        android:id="@+id/buttonHerbaty"
         android:layout_below="@+id/buttonProdukty"
         android:layout_alignLeft="@+id/buttonProdukty"
         android:layout_alignStart="@+id/buttonProdukty" />
@@ -58,8 +58,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="29dp"
-        android:id="@+id/button3"
-        android:layout_below="@+id/button2"
+        android:id="@+id/buttonKoszyk"
+        android:layout_below="@+id/buttonHerbaty"
         android:layout_toLeftOf="@+id/log"
         android:layout_toStartOf="@+id/log" />
 </RelativeLayout>

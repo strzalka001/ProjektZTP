@@ -1,7 +1,9 @@
 package com.example.milek.projektztp;
 
 
-public class Produkt {
+import java.io.Serializable;
+
+public class Produkt implements Serializable{
 
     public int id;
     public String nazwa;
