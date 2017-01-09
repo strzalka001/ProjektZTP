@@ -13,13 +13,15 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.milek.projektztp.BazaDanych;
+
 public class ProduktyActivity extends AppCompatActivity {
 
     List products;
     ListView lvProducts;
     Button DodajDoKoszyka, ZobaczKoszyk;
     Produkt product= new Produkt("nazwa", 5, "opis");
-
+    BazaDanych baza = BazaDanych.PobierzBazeDanych(this, "baza.db", null, 1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,7 @@ public class ProduktyActivity extends AppCompatActivity {
 
 
         products = new ArrayList();
-        ProduktDAO db = new ProduktDAOimpl(this);
+        ProduktDAO db = new ProduktDAOimpl(this,baza);
         db.open();
         for (Produkt i : db.pobierzListeProduktow()) {
             db.usunProdukt(i.id);

@@ -8,13 +8,10 @@ import android.util.Log;
 
 public class BazaDanych extends SQLiteOpenHelper {
 
-    /*
-    private BazaDanych() {
-        super();
-    }
-    private static BazaDanych bazadanych = new BazaDanych();
 
-*/
+    private static BazaDanych bazadanych;
+
+
 
 
 
@@ -40,8 +37,28 @@ public class BazaDanych extends SQLiteOpenHelper {
 
 
     public BazaDanych(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+
+      super(context, name, factory, version);
+
     }
+
+
+    public static BazaDanych PobierzBazeDanych(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+
+
+        if (bazadanych==null)
+        {
+            bazadanych = new BazaDanych(context, name, factory, version);
+            return bazadanych;
+        }
+        else return bazadanych;
+    }
+
+
+
+
+
+
 
 
     @Override

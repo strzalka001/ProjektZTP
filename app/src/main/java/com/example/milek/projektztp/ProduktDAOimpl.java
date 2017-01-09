@@ -28,13 +28,14 @@ public class ProduktDAOimpl implements ProduktDAO {
 
     public ProduktDAOimpl() {}
 
-    public ProduktDAOimpl(Context context) {
+    public ProduktDAOimpl(Context context, BazaDanych baza) {
+        this.baza=baza;
         this.context = context;
     }
 
 
     public void open(){
-        baza = new BazaDanych(context, DB_NAZWA, null, DB_WERSJA);
+     //   baza = new BazaDanych
         try {
             db = baza.getWritableDatabase();
         } catch (SQLException e) {
