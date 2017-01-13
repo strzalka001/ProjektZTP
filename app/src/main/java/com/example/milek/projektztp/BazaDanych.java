@@ -8,18 +8,12 @@ import android.util.Log;
 
 public class BazaDanych extends SQLiteOpenHelper {
 
-
     private static BazaDanych bazadanych;
-
-
-
-
 
     private static final String DEBUG_TAG = "SqLite";
     private static final int DB_WERSJA = 1;
     private static final String DB_NAZWA = "baza.db";
     private static final String TABELA_PRODUKT = "produkty";
-
 
     private static final String PRODUKT_ID = "id";
     private static final String PRODUKT_NAZWA = "nazwa";
@@ -34,32 +28,16 @@ public class BazaDanych extends SQLiteOpenHelper {
             "DROP TABLE IF EXISTS " + TABELA_PRODUKT;
 
 
-
-
     public BazaDanych(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-
-      super(context, name, factory, version);
-
+        super(context, name, factory, version);
     }
-
 
     public static BazaDanych PobierzBazeDanych(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-
-
-        if (bazadanych==null)
-        {
+        if (bazadanych == null) {
             bazadanych = new BazaDanych(context, name, factory, version);
             return bazadanych;
-        }
-        else return bazadanych;
+        } else return bazadanych;
     }
-
-
-
-
-
-
-
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -69,8 +47,6 @@ public class BazaDanych extends SQLiteOpenHelper {
         Log.d(DEBUG_TAG, "Database creating...");
         Log.d(DEBUG_TAG, "Table " + TABELA_PRODUKT + " ver." + DB_WERSJA + " created");
     }
-
-
 
 
     @Override
@@ -85,12 +61,6 @@ public class BazaDanych extends SQLiteOpenHelper {
         onCreate(db);
 
     }
-
-
-
-
-
-
 }
 
 

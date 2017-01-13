@@ -26,27 +26,27 @@ public class ProduktDAOimpl implements ProduktDAO {
     private BazaDanych baza;
 
 
-    public ProduktDAOimpl() {}
+    public ProduktDAOimpl() {
+    }
 
     public ProduktDAOimpl(Context context, BazaDanych baza) {
-        this.baza=baza;
+        this.baza = baza;
         this.context = context;
     }
 
-
-    public void open(){
-     //   baza = new BazaDanych
+    public void open() {
+        //   baza = new BazaDanych
         try {
             db = baza.getWritableDatabase();
         } catch (SQLException e) {
             db = baza.getReadableDatabase();
         }
-
     }
 
     public void close() {
         baza.close();
     }
+
     ///////////////////////////////// DODAWANIE PRODUKTOW DO BAZY   ////////////////////////////////
     public long dodajProdukt(String nazwa, float cena, String opis) {
         ContentValues nowyWiersz = new ContentValues();
@@ -66,33 +66,33 @@ public class ProduktDAOimpl implements ProduktDAO {
 
 
     //////////////////////////////  POBIERANIE PRODUKTOW Z BAZY ////////////////////////////////////
-    public Produkt pobierzProdukt(int  id) {
-        String[] columns = {PRODUKT_ID, PRODUKT_NAZWA,PRODUKT_CENA, PRODUKT_OPIS};
-        String where = PRODUKT_ID + "="+id;
+    public Produkt pobierzProdukt(int id) {
+        String[] columns = {PRODUKT_ID, PRODUKT_NAZWA, PRODUKT_CENA, PRODUKT_OPIS};
+        String where = PRODUKT_ID + "=" + id;
         Cursor cursor = db.query(TABELA_PRODUKT, columns, where, null, null, null, null);
         Produkt task = null;
-        if(cursor != null && cursor.moveToFirst()) {
+        if (cursor != null && cursor.moveToFirst()) {
             String nazwa = cursor.getString(1);
             String cena = cursor.getString(2);
             String opis = cursor.getString(3);
 
-            task = new Produkt(id, nazwa, Float.parseFloat(cena),opis);
+            task = new Produkt(id, nazwa, Float.parseFloat(cena), opis);
         }
         return task;
     }
 
     public Cursor pobierzProdukty() {
         String[] columns = {PRODUKT_ID, PRODUKT_NAZWA, PRODUKT_CENA, PRODUKT_OPIS};
-        return db.query(TABELA_PRODUKT,new String[] { PRODUKT_ID,
-                PRODUKT_NAZWA, PRODUKT_CENA , PRODUKT_OPIS }, null, null, null, null, null);
+        return db.query(TABELA_PRODUKT, new String[]{PRODUKT_ID,
+                PRODUKT_NAZWA, PRODUKT_CENA, PRODUKT_OPIS}, null, null, null, null, null);
     }
 
 
     public List<Produkt> pobierzListeProduktow() {
 
-        List<Produkt> pom =new ArrayList<Produkt>();
-        Cursor cursor = db.query(TABELA_PRODUKT,new String[] { PRODUKT_ID,
-                PRODUKT_NAZWA, PRODUKT_CENA , PRODUKT_OPIS }, null, null, null, null, null);
+        List<Produkt> pom = new ArrayList<Produkt>();
+        Cursor cursor = db.query(TABELA_PRODUKT, new String[]{PRODUKT_ID,
+                PRODUKT_NAZWA, PRODUKT_CENA, PRODUKT_OPIS}, null, null, null, null, null);
 
         if (cursor.moveToFirst()) {
             do {
@@ -114,21 +114,6 @@ public class ProduktDAOimpl implements ProduktDAO {
         String where = PRODUKT_ID + "=" + id;
         return db.delete(TABELA_PRODUKT, where, null) > 0;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

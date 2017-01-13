@@ -6,20 +6,16 @@ package com.example.milek.projektztp;
 
 public class HerbataCzarna extends Herbata {
 
-    float cena= 5f;
-    String opis= "Czarna Herbata";
+    float cena = 5f;
+    String opis = "czarna herbata Assam";
 
-    public  float Cena()
-    {
+    public float Cena() {
         return cena;
     }
 
-    public  String Opis()
-    {
-     return opis;
+    public String Opis() {
+        return opis;
     }
-
-
 
 
 }

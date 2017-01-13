@@ -6,21 +6,21 @@ package com.example.milek.projektztp;
 
 public class KulkiTapioka extends Kulki {
 
-        float cena = 2f;
-        String opis = " Kulki Tapioka";
+    float cena = 2f;
+    String opis = " kulki tapioka";
 
-        Herbata herbata;
+    Herbata herbata;
 
-public KulkiTapioka(Herbata pHerbata) {
+    public KulkiTapioka(Herbata pHerbata) {
         super(pHerbata);
-        }
+    }
 
-public float Cena() {
+    public float Cena() {
         return super.Cena() + cena;
-        }
+    }
 
-public String Opis() {
+    public String Opis() {
         return super.Opis() + "\n " + opis;
-        }
+    }
 
-        }
+}

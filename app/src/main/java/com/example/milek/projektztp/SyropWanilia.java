@@ -7,7 +7,7 @@ package com.example.milek.projektztp;
 public class SyropWanilia extends Syrop{
 
     float cena=1.1f;
-    String opis = " Syrop Wanilia";
+    String opis = " syrop waniliowy Monin";
 
     Herbata herbata;
 

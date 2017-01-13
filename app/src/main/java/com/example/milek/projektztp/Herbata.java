@@ -9,6 +9,4 @@ public abstract class Herbata {
     public abstract float Cena();
     public abstract String Opis();
 
-
-
 }

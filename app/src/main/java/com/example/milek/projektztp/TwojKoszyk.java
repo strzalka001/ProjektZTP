@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 public class TwojKoszyk {
 
-    private static ArrayList<Produkt> koszyk = new ArrayList<Produkt>();
+    private static ArrayList<Produkt> koszyk = new ArrayList<>();
 
-    TwojKoszyk(){
+    TwojKoszyk() {
     }
 
     public static ArrayList<Produkt> pobierzKoszyk() {

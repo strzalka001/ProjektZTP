@@ -7,7 +7,7 @@ package com.example.milek.projektztp;
 public class KulkiTruskawka extends Kulki {
 
     float cena = 2.2f;
-    String opis = " Kulki Truskawka";
+    String opis = " kulki truskawkowe";
 
     Herbata herbata;
 

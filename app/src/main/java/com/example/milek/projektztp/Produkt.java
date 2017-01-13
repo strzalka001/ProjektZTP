@@ -3,14 +3,15 @@ package com.example.milek.projektztp;
 
 import java.io.Serializable;
 
-public class Produkt implements Serializable{
+public class Produkt implements Serializable {
 
     public int id;
     public String nazwa;
     public float cena;
     public String opis;
 
-    public Produkt() {}
+    public Produkt() {
+    }
 
     public Produkt(int id, String nazwa, float cena, String opis) {
         this.id = id;

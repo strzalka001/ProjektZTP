@@ -32,7 +32,6 @@ public class ProduktyActivity extends AppCompatActivity {
         addListenerOnButtonDodajDoKoszyk();
         addListenerOnButtonZobaczKoszyk();
 
-
         products = new ArrayList();
         ProduktDAO db = new ProduktDAOimpl(this,baza);
         db.open();
@@ -40,17 +39,21 @@ public class ProduktyActivity extends AppCompatActivity {
             db.usunProdukt(i.id);
         }
 
-        db.dodajProdukt("sok", 4 , "Sok jest zdrowy");
-        db.dodajProdukt("sok pomaranczowy", 3 , "Sok jest bardzo zdrowy");
-        db.dodajProdukt("colka", 2 , "Colka jest pyszna");
-
+        db.dodajProdukt("Jaśminowa kiwi", 7.4f , "Orzeźwiający napój na bazie zielonej herbaty jaśminowej o smaku kiwi");
+        db.dodajProdukt("Czarna brzoskwinia", 8.3f , "Herbata czarna z brzoskwinią z żelkami winogronowymi");
+        db.dodajProdukt("Oolong Choco", 8.2f , "Bubble Tea na bazie herbaty Oolong z czekoladą, mlekiem i z tapioką");
+        db.dodajProdukt("Japońska Matcha", 9.2f , "Zielona japońska herbata Matcha doskonale smakuje w wersji mrożonej z mlekiem");
+        db.dodajProdukt("Jaśminowy Piernik", 9.8f , "Rozgrzewająca Bubble Tea? Jaśminowa herbata z mieszanką piernikową, z cytryną i z żelkami liczi");
+        db.dodajProdukt("Jaśminowa kiwi", 7.4f , "Orzeźwiający napój na bazie zielonej herbaty jaśminowej o smaku kiwi");
+        db.dodajProdukt("Czarna brzoskwinia", 8.3f , "Herbata czarna z brzoskwinią z żelkami winogronowymi");
+        db.dodajProdukt("Oolong Choco", 8.2f , "Bubble Tea na bazie herbaty Oolong z czekoladą, mlekiem i z tapioką");
+        db.dodajProdukt("Japońska Matcha", 9.2f , "Zielona japońska herbata Matcha doskonale smakuje w wersji mrożonej z mlekiem");
+        db.dodajProdukt("Jaśminowy Piernik", 9.8f , "Rozgrzewająca Bubble Tea? Jaśminowa herbata z mieszanką piernikową, z cytryną i z żelkami liczi");
 
         lvProducts = (ListView) findViewById( R.id.lista_produktow);
         //pole = (TextView) findViewById(R.id.textView4);
         lvProducts.setAdapter(new ListaAdapter(this, db.pobierzListeProduktow()));
         lvProducts.setClickable(true);
-
-
 
         lvProducts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -59,10 +62,8 @@ public class ProduktyActivity extends AppCompatActivity {
                 // Toast.makeText(getApplicationContext(),product.getDesc(),Toast.LENGTH_LONG).show();
                 //pole.setText(product.getDesc());
                 DodajDoKoszyka.setEnabled(true);
-
             }
         });
-
     }
 
     public void addListenerOnButtonDodajDoKoszyk() {
