@@ -18,6 +18,9 @@ public class Rejestracja extends AppCompatActivity{
     private EditText etEmail, etPass;
     BazaDanych baza;
     UzytkownikDAO db;
+    Promocja promo = new Promocja();
+    UzytkownikDAO obserwator = new UzytkownikDAOimpl();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,7 @@ public class Rejestracja extends AppCompatActivity{
 
        // baza = BazaDanych.PobierzBazeDanych(this, "baza.db", null, 1);
         baza = new BazaDanych(this, "baza.db", null, 1);
+
 
 
         db = new UzytkownikDAOimpl(this,baza);
@@ -70,7 +74,9 @@ public class Rejestracja extends AppCompatActivity{
             displayToast("Uzupełnij wszystkie pola");
         }else{
             db.dodajUzytkownika(email,haslo);
-
+            promo.dodajObserwatora(db);
+            promo.zrobPromocje();
+            //promo.powiadomObserwatorow();
             displayToast("Użytkownik zarejestrowany");
             finish();
         }

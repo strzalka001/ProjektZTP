@@ -30,4 +30,6 @@ public interface UzytkownikDAO {
 
     public boolean usunUzytkownika(long id);
 
+    public void aktualizujPromocje();
+
 }

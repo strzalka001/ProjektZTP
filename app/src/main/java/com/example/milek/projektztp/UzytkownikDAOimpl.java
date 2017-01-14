@@ -24,6 +24,8 @@ public class UzytkownikDAOimpl implements UzytkownikDAO {
     private SQLiteDatabase db;
     private Context context;
     private BazaDanych baza;
+    public Promocja mojaPromocja;
+    public int mojaZnizka;
 
 
     public UzytkownikDAOimpl() {
@@ -131,5 +133,9 @@ public class UzytkownikDAOimpl implements UzytkownikDAO {
         return db.delete(TABELA_USER, where, null) > 0;
     }
 
+    public void aktualizujPromocje(){
+
+        mojaZnizka = mojaPromocja.pobierzPromocje();
+    }
 
 }

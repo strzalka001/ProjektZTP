@@ -19,7 +19,8 @@
         <activity android:name=".HerbatyActivity" />
         <activity android:name=".KoszykActivity" />
         <activity android:name=".Logowanie" />
-        <activity android:name=".Rejestracja"></activity>
+        <activity android:name=".Rejestracja" />
+        <activity android:name=".MojePromocje"></activity>
     </application>
 
 </manifest>

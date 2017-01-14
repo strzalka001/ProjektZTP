@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     Button produkty;
     Button herbaty;
     Button koszyk;
+    Button promo;
     ArrayList<Produkt> kosz = new ArrayList<Produkt>();
     //BazaDanych baza = BazaDanych.PobierzBazeDanych(this, "baza1.db", null, 1);
     BazaDanych baza;
@@ -33,10 +34,12 @@ public class MainActivity extends AppCompatActivity {
         herbaty = (Button) findViewById(R.id.buttonHerbaty);
         koszyk = (Button) findViewById(R.id.buttonKoszyk);
         login = (Button) findViewById(R.id.log);
+        promo=(Button)findViewById(R.id.promo);
         addListenerOnButtonProdukty();
         addListenerOnButtonHerbaty();
         addListenerOnButtonKoszyk();
         addListenerOnButtonLogowanie();
+        addListenerOnButtonPromo();
        // addListenerOnButtonWylogowanie();
 
         BazaDanych baza = new BazaDanych(this, "baza1.db", null, 1);
@@ -128,6 +131,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View arg0) {
                 Intent intent = new Intent(context, KoszykActivity.class);
                 intent.putExtra("kosz", kosz);
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void addListenerOnButtonPromo() {
+        final Context context = this;
+        promo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = new Intent(context, MojePromocje.class);
                 startActivity(intent);
             }
         });
