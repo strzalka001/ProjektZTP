@@ -2,8 +2,10 @@ package com.example.milek.projektztp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +17,7 @@ public class Logowanie extends AppCompatActivity {
     BazaDanych baza = BazaDanych.PobierzBazeDanych(this, "baza.db", null, 1);
     private Sesja session;
     UzytkownikDAO db;
-
+    Promocja promo = new Promocja();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,20 +40,6 @@ public class Logowanie extends AppCompatActivity {
             finish();
         }
     }
-
-//    @Override
-//    public void onClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.btnLogin:
-//                login();
-//                break;
-//            case R.id.btnReg:
-//                startActivity(new Intent(Logowanie.this, Rejestracja.class));
-//                break;
-//            default:
-//
-//        }
-//    }
 
     public void addListenerOnButtonLogowanie() {
         login.setOnClickListener(new View.OnClickListener() {
@@ -77,9 +65,11 @@ public class Logowanie extends AppCompatActivity {
         String email = etEmail.getText().toString();
         String pass = etPass.getText().toString();
 
-        //UzytkownikDAO u = new UzytkownikDAOimpl();
         if (db.pobierzUzytkownika(email, pass)) {
             session.setLoggedin(true);
+            //Log.d("niepowiadomieni","nielol");
+            promo.powiadomObserwatorow();
+            //Log.d("powiadomieni","lol");
             Toast.makeText(getApplicationContext(), "Zalogowano!", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(Logowanie.this, MainActivity.class));
             finish();

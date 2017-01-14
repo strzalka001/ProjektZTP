@@ -133,9 +133,9 @@ public class UzytkownikDAOimpl implements UzytkownikDAO {
         return db.delete(TABELA_USER, where, null) > 0;
     }
 
-    public void aktualizujPromocje(){
-
+    public int aktualizujPromocje() {
         mojaZnizka = mojaPromocja.pobierzPromocje();
+        return mojaZnizka;
     }
 
 }

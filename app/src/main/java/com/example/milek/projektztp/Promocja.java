@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class Promocja implements IPromocja {
 
-    public int znizkaPromo = 10;
+    public int znizkaPromo = 1;
     private ArrayList<UzytkownikDAO> listaUzytkownikow = new ArrayList<>();
 
     public Promocja() {
@@ -25,20 +25,20 @@ public class Promocja implements IPromocja {
 
     public void powiadomObserwatorow() {
 
-        for (UzytkownikDAO u:listaUzytkownikow
-             ) {
+        for (UzytkownikDAO u : listaUzytkownikow
+                ) {
             u.aktualizujPromocje();
         }
     }
 
-    public void zrobPromocje(){
+    public void zrobPromocje() {
         Random random = new Random();
-        znizkaPromo = random.nextInt((20 - 5) + 1) - 5;
+        //this.znizkaPromo = random.nextInt((20 - 5) + 1)-5;
+        this.znizkaPromo = 25;
+
     }
 
     public int pobierzPromocje() {
         return znizkaPromo;
     }
-
-
 }
