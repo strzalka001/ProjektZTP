@@ -30,7 +30,7 @@ public class BazaDanych extends SQLiteOpenHelper {
     public static final String UTWORZ_TABELA_USER = "CREATE TABLE " + TABELA_USER + "("
             + ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + EMAIL + " TEXT,"
-            + HASLO + " TEXT);";
+            + HASLO + " TEXT" +");";
 
     public static final String USUN_TABELA_USER =
             "DROP TABLE IF EXISTS " + TABELA_USER;

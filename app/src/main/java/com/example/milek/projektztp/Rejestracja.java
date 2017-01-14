@@ -17,7 +17,7 @@ public class Rejestracja extends AppCompatActivity{
     private TextView tvLogin;
     private EditText etEmail, etPass;
     BazaDanych baza;
-
+    UzytkownikDAO db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +25,10 @@ public class Rejestracja extends AppCompatActivity{
         setContentView(R.layout.activity_rejestracja);
 
        // baza = BazaDanych.PobierzBazeDanych(this, "baza.db", null, 1);
-        baza = new BazaDanych(this, "baza1.db", null, 1);
+        baza = new BazaDanych(this, "baza.db", null, 1);
 
 
-        UzytkownikDAO db = new UzytkownikDAOimpl(this,baza);
+        db = new UzytkownikDAOimpl(this,baza);
         db.openToWrite();
 
         reg = (Button) findViewById(R.id.btnReg);
@@ -63,13 +63,13 @@ public class Rejestracja extends AppCompatActivity{
     private void register(){
         String email = etEmail.getText().toString();
         String haslo = etPass.getText().toString();
+       // Log.d("Email: ", email + " " + haslo);
 
-        UzytkownikDAO u = new UzytkownikDAOimpl();
 
-        if(email.isEmpty() && haslo.isEmpty()){
+        if(email.isEmpty() || haslo.isEmpty()){
             displayToast("Uzupełnij wszystkie pola");
         }else{
-            u.dodajUzytkownika(email,haslo);
+            db.dodajUzytkownika(email,haslo);
 
             displayToast("Użytkownik zarejestrowany");
             finish();

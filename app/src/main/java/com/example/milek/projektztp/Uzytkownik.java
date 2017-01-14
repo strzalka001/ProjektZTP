@@ -39,7 +39,7 @@ public class Uzytkownik implements Serializable {
     }
 
     public void setEmail(String nazwa) {
-        this.email = email;
+        this.email = nazwa;
     }
 
     public String getHaslo() {
@@ -47,6 +47,6 @@ public class Uzytkownik implements Serializable {
     }
 
     public void setHaslo(String opis) {
-        this.haslo = haslo;
+        this.haslo = opis;
     }
 }

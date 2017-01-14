@@ -14,6 +14,7 @@ public class Logowanie extends AppCompatActivity {
     private EditText etEmail, etPass;
     BazaDanych baza = BazaDanych.PobierzBazeDanych(this, "baza.db", null, 1);
     private Sesja session;
+    UzytkownikDAO db;
 
 
     @Override
@@ -21,7 +22,7 @@ public class Logowanie extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logowanie);
 
-        UzytkownikDAO db = new UzytkownikDAOimpl(this,baza);
+        db = new UzytkownikDAOimpl(this,baza);
         db.open();
 
         session = new Sesja(this);
@@ -33,7 +34,7 @@ public class Logowanie extends AppCompatActivity {
         addListenerOnButtonLogowanie();
 
         if (session.loggedin()) {
-            startActivity(new Intent(Logowanie.this, MainActivity.class));
+            //startActivity(new Intent(Logowanie.this, MainActivity.class));
             finish();
         }
     }
@@ -76,9 +77,10 @@ public class Logowanie extends AppCompatActivity {
         String email = etEmail.getText().toString();
         String pass = etPass.getText().toString();
 
-        UzytkownikDAO u = new UzytkownikDAOimpl();
-        if (u.pobierzUzytkownika(email, pass)) {
+        //UzytkownikDAO u = new UzytkownikDAOimpl();
+        if (db.pobierzUzytkownika(email, pass)) {
             session.setLoggedin(true);
+            Toast.makeText(getApplicationContext(), "Zalogowano!", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(Logowanie.this, MainActivity.class));
             finish();
         } else {
