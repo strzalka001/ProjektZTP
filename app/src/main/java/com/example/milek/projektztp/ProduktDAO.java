@@ -11,12 +11,19 @@ import java.util.List;
 public interface ProduktDAO {
 
     public void open();
+
     public void close();
+
     public long dodajProdukt(String nazwa, float cena, String opis);
+
     public long dodajProdukt(Produkt prod);
-    public Produkt pobierzProdukt(int  id);
+
+    public Produkt pobierzProdukt(int id);
+
     public Cursor pobierzProdukty();
+
     public List<Produkt> pobierzListeProduktow();
+
     public boolean usunProdukt(long id);
 
 }

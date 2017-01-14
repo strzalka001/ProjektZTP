@@ -23,6 +23,7 @@ public class ProduktyActivity extends AppCompatActivity {
     Produkt product= new Produkt("nazwa", 5, "opis");
     BazaDanych baza = BazaDanych.PobierzBazeDanych(this, "baza.db", null, 1);
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
