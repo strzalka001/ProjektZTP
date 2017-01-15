@@ -13,7 +13,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
         android:padding="20dp"
-        android:text="MyApp"
+        android:text="Rejestracja"
         android:textColor="#ffffff"
         android:textSize="30sp" />
 
@@ -38,7 +38,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:hint="Password"
+        android:hint="Hasło"
         android:inputType="textPassword"
         android:maxLines="1"
         android:textColorHint="#ffffff" />
@@ -52,14 +52,14 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:onClick="register"
-        android:text="Register" />
+        android:text="zarejestruj" />
 
     <TextView
         android:id="@+id/tvLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Back to login"
+        android:text="Przejdź do logowania"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ffffff" />
 

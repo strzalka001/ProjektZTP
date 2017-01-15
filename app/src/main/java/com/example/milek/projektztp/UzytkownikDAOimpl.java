@@ -24,16 +24,16 @@ public class UzytkownikDAOimpl implements UzytkownikDAO {
     private SQLiteDatabase db;
     private Context context;
     private BazaDanych baza;
-    public Promocja mojaPromocja;
-    public int mojaZnizka;
-
+    private Promocja mojaPromocja;
+    private int mojaZnizka;
 
     public UzytkownikDAOimpl() {
     }
 
-    public UzytkownikDAOimpl(Context context, BazaDanych baza) {
+    public UzytkownikDAOimpl(Context context, BazaDanych baza,Promocja promocja) {
         this.baza = baza;
         this.context = context;
+        this.mojaPromocja = promocja;
     }
 
     public void open() {
@@ -134,6 +134,7 @@ public class UzytkownikDAOimpl implements UzytkownikDAO {
     }
 
     public int aktualizujPromocje() {
+        //mojaPromocja.zrobPromocje(); to na pewno nie może tu zostać
         mojaZnizka = mojaPromocja.pobierzPromocje();
         return mojaZnizka;
     }

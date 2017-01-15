@@ -127,7 +127,8 @@ public class MainActivity extends AppCompatActivity {
         los.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                aktualnaPromocja.zrobPromocje();
+                aktualnaPromocja.zrobPromocje(23);
+                aktualnaPromocja.powiadomObserwatorow();
             }
         });
     }
