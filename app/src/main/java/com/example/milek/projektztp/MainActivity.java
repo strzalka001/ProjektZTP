@@ -9,14 +9,15 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button login,produkty,herbaty,koszyk,promo,los,btnLogout;
     private Promocja aktualnaPromocja = new Promocja();
-    private Sesja session;
-    ArrayList<Produkt> kosz = new ArrayList<Produkt>();
+    private Sesja sesja;
+    private ArrayList<Produkt> kosz = new ArrayList<Produkt>();
+    BazaDanych baza = BazaDanych.PobierzBazeDanych(this, "baza.db", null, 1);
+    UzytkownikDAO u;
 
 
     @Override
@@ -24,9 +25,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        session = new Sesja(this);
-        //aktualnaPromocja;
-        //aktualnaPromocja.zrobPromocje();
+        aktualnaPromocja = new Promocja();
+        u = new UzytkownikDAOimpl(this, baza, aktualnaPromocja);
+
+        sesja = new Sesja(this);
 
         produkty = (Button) findViewById(R.id.buttonProdukty);
         herbaty = (Button) findViewById(R.id.buttonHerbaty);
@@ -50,15 +52,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if (!session.loggedin()) {
+        if (!sesja.loggedin()) {
             logout();
             Toast.makeText(this,"Wylogowano",Toast.LENGTH_SHORT).show();
-
         }
     }
 
     private void logout() {
-        session.setLoggedin(false);
+        sesja.setLoggedin(false);
     }
 
     public void addListenerOnButtonLogowanie() {
@@ -85,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
     public void addListenerOnButtonHerbaty() {
         final Context context = this;
@@ -127,11 +127,10 @@ public class MainActivity extends AppCompatActivity {
         los.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                aktualnaPromocja.zrobPromocje(23);
+                aktualnaPromocja.zrobPromocje(20);
+                //u.aktualizujPromocje(aktualnaPromocja);
                 aktualnaPromocja.powiadomObserwatorow();
             }
         });
     }
-
-
 }

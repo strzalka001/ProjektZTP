@@ -68,6 +68,8 @@ public class Rejestracja extends AppCompatActivity {
         } else {
             db.dodajUzytkownika(email, haslo);
             promo.dodajObserwatora(db);
+            promo.zrobPromocje(26);
+            promo.powiadomObserwatorow();
             wyswietlToast("Użytkownik zarejestrowany");
             finish();
         }

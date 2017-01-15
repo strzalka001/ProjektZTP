@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -134,8 +135,13 @@ public class UzytkownikDAOimpl implements UzytkownikDAO {
     }
 
     public int aktualizujPromocje() {
-        //mojaPromocja.zrobPromocje(); to na pewno nie może tu zostać
         mojaZnizka = mojaPromocja.pobierzPromocje();
+        String pp = String.valueOf(mojaZnizka);
+        Log.d("wartość w akt: ", pp);
+        return mojaZnizka;
+    }
+
+    public int zwrocZnizke(){
         return mojaZnizka;
     }
 

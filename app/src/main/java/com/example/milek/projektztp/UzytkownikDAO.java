@@ -32,4 +32,6 @@ public interface UzytkownikDAO {
 
     public int aktualizujPromocje();
 
+    public int zwrocZnizke();
+
 }
