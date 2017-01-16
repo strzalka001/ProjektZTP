@@ -27,11 +27,12 @@ public class MojePromocje extends AppCompatActivity {
 
         aktualnaPromocja = new Promocja();
         u = new UzytkownikDAOimpl(this, baza, aktualnaPromocja);
+        aktualnaPromocja.dodajObserwatora(u);
 
         aktualnaPromocja.zrobPromocje(20);
         aktualnaPromocja.pobierzPromocje();
-        u.aktualizujPromocje();
         aktualnaPromocja.powiadomObserwatorow();
+
 
         txt = (TextView) findViewById(R.id.textView6);
         txt.setText("Twoja zniżka wynosi obecnie" + String.valueOf(u.zwrocZnizke()) + "%");

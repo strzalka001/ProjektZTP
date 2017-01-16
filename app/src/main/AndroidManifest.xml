@@ -5,10 +5,10 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Bubble Tea"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Startowa">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,7 +20,8 @@
         <activity android:name=".KoszykActivity" />
         <activity android:name=".Logowanie" />
         <activity android:name=".Rejestracja" />
-        <activity android:name=".MojePromocje"></activity>
+        <activity android:name=".MojePromocje" />
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
