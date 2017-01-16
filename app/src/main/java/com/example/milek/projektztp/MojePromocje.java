@@ -35,6 +35,6 @@ public class MojePromocje extends AppCompatActivity {
 
 
         txt = (TextView) findViewById(R.id.textView6);
-        txt.setText("Twoja zniżka wynosi obecnie" + String.valueOf(u.zwrocZnizke()) + "%");
+        txt.setText("Twoja zniżka wynosi obecnie " + String.valueOf(u.zwrocZnizke()) + "%");
     }
 }
