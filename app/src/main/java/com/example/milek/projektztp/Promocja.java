@@ -12,8 +12,12 @@ public class Promocja implements IPromocja {
     public int znizkaPromo = 1;
     private ArrayList<UzytkownikDAO> listaUzytkownikow = new ArrayList<>();
 
+
     public Promocja() {
     }
+
+
+
 
     public void dodajObserwatora(UzytkownikDAO u) {
         listaUzytkownikow.add(u);

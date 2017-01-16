@@ -33,6 +33,7 @@ public class ProduktyActivity extends AppCompatActivity {
         addListenerOnButtonDodajDoKoszyk();
         addListenerOnButtonZobaczKoszyk();
 
+        
         products = new ArrayList();
         ProduktDAO db = new ProduktDAOimpl(this,baza);
         db.open();

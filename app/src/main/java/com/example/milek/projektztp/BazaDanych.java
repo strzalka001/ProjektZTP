@@ -43,7 +43,7 @@ public class BazaDanych extends SQLiteOpenHelper {
             "DROP TABLE IF EXISTS " + TABELA_PRODUKT;
 
 
-    public BazaDanych(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    private BazaDanych(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
@@ -51,6 +51,7 @@ public class BazaDanych extends SQLiteOpenHelper {
 //    public BazaDanych(Context context) {
 //        super(context, DB_NAZWA, null, DB_WERSJA);
 //    }
+
 
 
     public static BazaDanych PobierzBazeDanych(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {

@@ -18,7 +18,7 @@ public class Rejestracja extends AppCompatActivity {
     private String email, haslo;
     BazaDanych baza;
     UzytkownikDAO db;
-    Promocja promo = new Promocja();
+    Promocja promo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +68,7 @@ public class Rejestracja extends AppCompatActivity {
         } else {
             db.dodajUzytkownika(email, haslo);
             promo.dodajObserwatora(db);
-            promo.zrobPromocje(26);
+           // promo.zrobPromocje(26);
             promo.powiadomObserwatorow();
             wyswietlToast("Użytkownik zarejestrowany");
             finish();

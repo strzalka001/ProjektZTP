@@ -21,13 +21,15 @@ public class MojePromocje extends AppCompatActivity {
 
         sesja = new Sesja(this);
         if (!sesja.loggedin()) {
-            startActivity(new Intent(MojePromocje.this, MainActivity.class));
+            //startActivity(new Intent(MojePromocje.this, MainActivity.class));
             finish();
         }
 
         aktualnaPromocja = new Promocja();
         u = new UzytkownikDAOimpl(this, baza, aktualnaPromocja);
         aktualnaPromocja.dodajObserwatora(u);
+
+
 
         aktualnaPromocja.zrobPromocje(20);
         aktualnaPromocja.pobierzPromocje();
