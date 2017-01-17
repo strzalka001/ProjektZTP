@@ -17,7 +17,7 @@ public class Logowanie extends AppCompatActivity {
     private TextView tvReg;
     private String email, haslo;
     private Sesja sesja;
-    UzytkownikDAO db,db2;
+    UzytkownikDAO db;
     BazaDanych baza = BazaDanych.PobierzBazeDanych(this, "baza.db", null, 1);
     Promocja promo;
 
@@ -32,10 +32,9 @@ public class Logowanie extends AppCompatActivity {
 
         //promo = ((MyApplication)getApplication()).pobierzPromocje();
         db = new UzytkownikDAOimpl(this, baza, promo);
-        db2 = new UzytkownikDAOimpl(this, baza, promo);
+
 
         db.open();
-        //db2.open();
 
         sesja = new Sesja(this);
         login = (Button) findViewById(R.id.btnLogin);
