@@ -9,15 +9,22 @@ import java.util.Random;
 
 public class Promocja implements IPromocja {
 
-    public int znizkaPromo = 1;
-    private ArrayList<UzytkownikDAO> listaUzytkownikow = new ArrayList<>();
 
+    private int znizkaPromo = 1;
+    private ArrayList<UzytkownikDAO> listaUzytkownikow = new ArrayList<>();
+    private static volatile Promocja mPromocja = null;
+
+
+//    public static Promocja pobierzNowaPromocje(){
+//        if (mPromocja == null) {
+//            mPromocja = new Promocja();
+//            return mPromocja;
+//        } else return mPromocja;
+//    }
 
     public Promocja() {
+
     }
-
-
-
 
     public void dodajObserwatora(UzytkownikDAO u) {
         listaUzytkownikow.add(u);
@@ -41,7 +48,7 @@ public class Promocja implements IPromocja {
         this.znizkaPromo = a;
     }
 
-    public int pobierzPromocje() {
+    public int pobierzZnizke() {
         return znizkaPromo;
     }
 }

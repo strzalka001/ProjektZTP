@@ -11,14 +11,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Logowanie extends AppCompatActivity {
+
     private Button login;
     private EditText etEmail, etPass;
     private TextView tvReg;
-    BazaDanych baza = BazaDanych.PobierzBazeDanych(this, "baza.db", null, 1);
-    Promocja promo = new Promocja();
+    private String email, haslo;
     private Sesja sesja;
     UzytkownikDAO db;
-    private String email, haslo;
+    BazaDanych baza = BazaDanych.PobierzBazeDanych(this, "baza.db", null, 1);
+    Promocja promo;
+
 
 
     @Override
@@ -26,6 +28,7 @@ public class Logowanie extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logowanie);
 
+        promo = ((MyApplication)getApplication()).pobierzPromocje();
         db = new UzytkownikDAOimpl(this, baza, promo);
         db.open();
 
@@ -68,9 +71,11 @@ public class Logowanie extends AppCompatActivity {
 
         if (db.pobierzUzytkownika(email, haslo)) {
             sesja.setLoggedin(true);
+            ((MyApplication)getApplication()).zapiszUsera(db);
             Toast.makeText(getApplicationContext(), "Zalogowano", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(Logowanie.this, MainActivity.class));
             finish();
+
         } else {
             Toast.makeText(getApplicationContext(), "Niepoprawne dane", Toast.LENGTH_SHORT).show();
         }

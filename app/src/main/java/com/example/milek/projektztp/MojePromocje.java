@@ -1,9 +1,7 @@
 package com.example.milek.projektztp;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
 public class MojePromocje extends AppCompatActivity {
@@ -21,22 +19,15 @@ public class MojePromocje extends AppCompatActivity {
 
         sesja = new Sesja(this);
         if (!sesja.loggedin()) {
-            //startActivity(new Intent(MojePromocje.this, MainActivity.class));
             finish();
         }
 
-        aktualnaPromocja = new Promocja();
-        u = new UzytkownikDAOimpl(this, baza, aktualnaPromocja);
-        aktualnaPromocja.dodajObserwatora(u);
-
-
-
-        aktualnaPromocja.zrobPromocje(20);
-        aktualnaPromocja.pobierzPromocje();
-        aktualnaPromocja.powiadomObserwatorow();
-
+        u = ((MyApplication) getApplication()).pobierzUsera();
+        //aktualnaPromocja = ((MyApplication)getApplication()).pobierzPromocje();
 
         txt = (TextView) findViewById(R.id.textView6);
         txt.setText("Twoja zniżka wynosi obecnie " + String.valueOf(u.zwrocZnizke()) + "%");
+        //txt.setText("Twoja zniżka wynosi obecnie " + String.valueOf(aktualnaPromocja.pobierzZnizke()) + "%");
+
     }
 }

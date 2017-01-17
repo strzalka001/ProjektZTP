@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,22 +17,38 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+
     private Button produkty, herbaty, koszyk, promo, los;
-    private Promocja aktualnaPromocja = new Promocja();
+    //private Promocja aktualnaPromocja = new Promocja();
+
     private Sesja sesja;
     private ArrayList<Produkt> kosz = new ArrayList<Produkt>();
     private UzytkownikDAO u;
     BazaDanych baza = BazaDanych.PobierzBazeDanych(this, "baza.db", null, 1);
+    Promocja aktualnaPromocja;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        aktualnaPromocja = new Promocja();
-        u = new UzytkownikDAOimpl(this, baza, aktualnaPromocja);
         sesja = new Sesja(this);
+
+        if (sesja.loggedin()) {
+
+            aktualnaPromocja = ((MyApplication) getApplication()).pobierzPromocje();
+            u = ((MyApplication) getApplication()).pobierzUsera();
+
+            aktualnaPromocja.zrobPromocje(23);
+            Log.d("SPRAWDZAM: ", String.valueOf(aktualnaPromocja.pobierzZnizke()));
+            aktualnaPromocja.powiadomObserwatorow();
+            ((MyApplication)getApplication()).zapiszPromocje(aktualnaPromocja);
+            Log.d("SPRAWDZAM: ", String.valueOf(u.zwrocZnizke()));
+
+            ((MyApplication) getApplication()).zapiszUsera(u);
+            ((MyApplication) getApplication()).zapiszPromocje(aktualnaPromocja);
+        }
+
 
 
         produkty = (Button) findViewById(R.id.buttonProdukty);
@@ -42,11 +59,11 @@ public class MainActivity extends AppCompatActivity {
         addListenerOnButtonHerbaty();
         addListenerOnButtonKoszyk();
 
-        if (!sesja.loggedin()) {
-            logout();
-        }
-    }
+//        if (!sesja.loggedin()) {
+//            logout();
+//        }
 
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -124,4 +141,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MojePromocje.class);
         startActivity(intent);
     }
+
 }

@@ -30,7 +30,7 @@ public interface UzytkownikDAO {
 
     public boolean usunUzytkownika(long id);
 
-    public int aktualizujPromocje();
+    public void aktualizujPromocje();
 
     public int zwrocZnizke();
 

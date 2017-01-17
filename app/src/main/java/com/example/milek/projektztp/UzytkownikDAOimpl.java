@@ -8,10 +8,11 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UzytkownikDAOimpl implements UzytkownikDAO {
+public class UzytkownikDAOimpl implements UzytkownikDAO, Serializable {
 
     private static final String DEBUG_TAG = "SqLite";
     private static final int DB_WERSJA = 1;
@@ -26,7 +27,7 @@ public class UzytkownikDAOimpl implements UzytkownikDAO {
     private Context context;
     private BazaDanych baza;
     private Promocja mojaPromocja;
-    private int mojaZnizka;
+    private int mojaZnizka=9;
 
     public UzytkownikDAOimpl() {
     }
@@ -134,11 +135,8 @@ public class UzytkownikDAOimpl implements UzytkownikDAO {
         return db.delete(TABELA_USER, where, null) > 0;
     }
 
-    public int aktualizujPromocje() {
-        mojaZnizka = mojaPromocja.pobierzPromocje();
-        String pp = String.valueOf(mojaZnizka);
-        Log.d("wartość w akt: ", pp);
-        return mojaZnizka;
+    public void aktualizujPromocje() {
+        mojaZnizka = mojaPromocja.pobierzZnizke();
     }
 
     public int zwrocZnizke(){

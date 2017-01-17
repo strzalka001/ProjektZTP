@@ -43,13 +43,12 @@ public class ListaAdapter  extends ArrayAdapter<Produkt> {
         Produkt product = getItem(position);
         //
         TextView txtTitle = (TextView) convertView.findViewById(R.id.nazwa);
-        txtTitle.setText(product.nazwa);
-
+        txtTitle.setText(product.getNazwa());
         TextView txtPrice = (TextView) convertView.findViewById(R.id.cena);
-        txtPrice.setText(Float.toString(product.cena) + " zł");
+        txtPrice.setText(Float.toString(product.getCena()) + " zł");
 
         TextView txtDesc = (TextView) convertView.findViewById(R.id.opis);
-        txtDesc.setText(product.opis);
+        txtDesc.setText(product.getOpis());
 
         // show image
         //ImageView img = (ImageView)convertView.findViewById(R.id.image);

@@ -18,6 +18,9 @@ public class Rejestracja extends AppCompatActivity {
     private String email, haslo;
     BazaDanych baza;
     UzytkownikDAO db;
+    //Promocja promo = Promocja.pobierzNowaPromocje();
+    //Promocja promo = new Promocja();
+//    Promocja promo = ((MyApplication)getApplication()).pobierzPromocje();
     Promocja promo;
 
     @Override
@@ -26,6 +29,8 @@ public class Rejestracja extends AppCompatActivity {
         setContentView(R.layout.activity_rejestracja);
 
         baza = BazaDanych.PobierzBazeDanych(this, "baza.db", null, 1);
+        promo = new Promocja();
+
         db = new UzytkownikDAOimpl(this, baza, promo);
         db.open();
 
@@ -68,8 +73,9 @@ public class Rejestracja extends AppCompatActivity {
         } else {
             db.dodajUzytkownika(email, haslo);
             promo.dodajObserwatora(db);
-           // promo.zrobPromocje(26);
-            promo.powiadomObserwatorow();
+            ((MyApplication)getApplication()).zapiszPromocje(promo);
+            ((MyApplication)getApplication()).zapiszUsera(db);
+
             wyswietlToast("Użytkownik zarejestrowany");
             finish();
         }
