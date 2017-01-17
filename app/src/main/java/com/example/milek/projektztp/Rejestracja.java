@@ -16,12 +16,10 @@ public class Rejestracja extends AppCompatActivity {
     private TextView tvLogin;
     private EditText etEmail, etPass;
     private String email, haslo;
+    private UzytkownikDAO uzytkownik;
+    private Promocja promo;
     BazaDanych baza;
-    UzytkownikDAO db;
-    //Promocja promo = Promocja.pobierzNowaPromocje();
-    //Promocja promo = new Promocja();
-//    Promocja promo = ((MyApplication)getApplication()).pobierzPromocje();
-    Promocja promo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,18 +29,18 @@ public class Rejestracja extends AppCompatActivity {
         baza = BazaDanych.PobierzBazeDanych(this, "baza.db", null, 1);
         promo = new Promocja();
 
-        db = new UzytkownikDAOimpl(this, baza, promo);
-        db.open();
+        uzytkownik = new UzytkownikDAOimpl(this, baza, promo);
+        uzytkownik.open();
 
         reg = (Button) findViewById(R.id.btnReg);
         tvLogin = (TextView) findViewById(R.id.tvLogin);
         etEmail = (EditText) findViewById(R.id.etEmail);
         etPass = (EditText) findViewById(R.id.etPass);
-        addListenerOnButtonLogowanie();
-        addListenerOnButtonRejestracja();
+        addListenerLogowanie();
+        addListenerRejestracja();
     }
 
-    public void addListenerOnButtonRejestracja() {
+    public void addListenerRejestracja() {
         reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -51,7 +49,7 @@ public class Rejestracja extends AppCompatActivity {
         });
     }
 
-    public void addListenerOnButtonLogowanie() {
+    public void addListenerLogowanie() {
         final Context context = this;
         tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,15 +64,14 @@ public class Rejestracja extends AppCompatActivity {
     private void zarejestruj() {
         email = etEmail.getText().toString();
         haslo = etPass.getText().toString();
-        //Log.d("Email: ", email + " " + haslo);
 
         if (email.isEmpty() || haslo.isEmpty() || !sprawdzMaila(email)) {
             wyswietlToast("Uzupełnij poprawnie wszystkie pola");
-        }else {
-            db.dodajUzytkownika(email, haslo);
-            promo.dodajObserwatora(db);
-            ((MyApplication)getApplication()).zapiszPromocje(promo);
-            ((MyApplication)getApplication()).zapiszUsera(db);
+        } else {
+            uzytkownik.dodajUzytkownika(email, haslo);
+            promo.dodajObserwatora(uzytkownik);
+            ((MyApplication) getApplication()).zapiszPromocje(promo);
+            ((MyApplication) getApplication()).zapiszUsera(uzytkownik);
 
             wyswietlToast("Użytkownik zarejestrowany");
             finish();

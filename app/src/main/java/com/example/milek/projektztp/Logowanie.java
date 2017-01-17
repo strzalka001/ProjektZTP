@@ -17,10 +17,9 @@ public class Logowanie extends AppCompatActivity {
     private TextView tvReg;
     private String email, haslo;
     private Sesja sesja;
-    UzytkownikDAO db;
-    BazaDanych baza = BazaDanych.PobierzBazeDanych(this, "baza.db", null, 1);
-    Promocja promo;
-
+    private UzytkownikDAO uzytkownik;
+    private Promocja promocja;
+    BazaDanych baza;
 
 
     @Override
@@ -28,37 +27,35 @@ public class Logowanie extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logowanie);
 
-        promo = new Promocja();
-
-        //promo = ((MyApplication)getApplication()).pobierzPromocje();
-        db = new UzytkownikDAOimpl(this, baza, promo);
-
-
-        db.open();
+        baza = BazaDanych.PobierzBazeDanych(this, "baza.db", null, 1);
+        promocja = new Promocja();
+        uzytkownik = new UzytkownikDAOimpl(this, baza, promocja);
+        uzytkownik.open();
 
         sesja = new Sesja(this);
         login = (Button) findViewById(R.id.btnLogin);
         tvReg = (TextView) findViewById(R.id.tvReg);
         etEmail = (EditText) findViewById(R.id.etEmail);
         etPass = (EditText) findViewById(R.id.etPass);
-        addListenerOnButtonRejestracja();
-        addListenerOnButtonLogowanie();
+
+        dodajListenerRejestracja();
+        dodajListenerLogowanie();
 
         if (sesja.loggedin()) {
             finish();
         }
     }
 
-    public void addListenerOnButtonLogowanie() {
+    public void dodajListenerLogowanie() {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                login();
+                zaloguj();
             }
         });
     }
 
-    public void addListenerOnButtonRejestracja() {
+    public void dodajListenerRejestracja() {
         final Context context = this;
         tvReg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,15 +66,15 @@ public class Logowanie extends AppCompatActivity {
         });
     }
 
-    private void login() {
+    private void zaloguj() {
         email = etEmail.getText().toString();
         haslo = etPass.getText().toString();
 
-        if (db.pobierzUzytkownika(email, haslo)) {
+        if (uzytkownik.pobierzUzytkownika(email, haslo)) {
             sesja.setLoggedin(true);
-            promo.dodajObserwatora(db);
-            ((MyApplication)getApplication()).zapiszUsera(db);
-            ((MyApplication)getApplication()).zapiszPromocje(promo);
+            promocja.dodajObserwatora(uzytkownik);
+            ((MyApplication)getApplication()).zapiszUsera(uzytkownik);
+            ((MyApplication)getApplication()).zapiszPromocje(promocja);
 
             Toast.makeText(getApplicationContext(), "Zalogowano", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(Logowanie.this, MainActivity.class));

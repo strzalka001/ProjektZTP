@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 public class Startowa extends AppCompatActivity {
 
     private ImageView mLogo;
-    private RelativeLayout layout;
+    private RelativeLayout mLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,13 +19,13 @@ public class Startowa extends AppCompatActivity {
         setContentView(R.layout.activity_startowa);
 
         mLogo = (ImageView) findViewById(R.id.imageView12);
-        layout = (RelativeLayout) findViewById(R.id.activity_start);
-        addListenerOnButtonStart();
+        mLayout = (RelativeLayout) findViewById(R.id.activity_start);
+        dodajListenerStart();
     }
 
-    public void addListenerOnButtonStart() {
+    public void dodajListenerStart() {
         final Context context = this;
-        layout.setOnClickListener(new View.OnClickListener() {
+        mLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 Intent intent = new Intent(context, MainActivity.class);

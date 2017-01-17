@@ -27,12 +27,12 @@ public class BazaDanych extends SQLiteOpenHelper {
     private static final String EMAIL = "email";
     private static final String HASLO = "haslo";
 
-    public static final String UTWORZ_TABELA_USER = "CREATE TABLE " + TABELA_USER + "("
+    private static final String UTWORZ_TABELA_USER = "CREATE TABLE " + TABELA_USER + "("
             + ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + EMAIL + " TEXT,"
-            + HASLO + " TEXT" +");";
+            + HASLO + " TEXT" + ");";
 
-    public static final String USUN_TABELA_USER =
+    private static final String USUN_TABELA_USER =
             "DROP TABLE IF EXISTS " + TABELA_USER;
 
     String UTWORZ_TABELA_PRODUKT = "CREATE TABLE " + TABELA_PRODUKT + "("
@@ -53,7 +53,6 @@ public class BazaDanych extends SQLiteOpenHelper {
 //    }
 
 
-
     public static BazaDanych PobierzBazeDanych(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         if (bazadanych == null) {
             bazadanych = new BazaDanych(context, name, factory, version);
@@ -66,7 +65,6 @@ public class BazaDanych extends SQLiteOpenHelper {
 
         db.execSQL(UTWORZ_TABELA_USER);
         db.execSQL(UTWORZ_TABELA_PRODUKT);
-
 
         Log.d(DEBUG_TAG, "Database creating...");
         Log.d(DEBUG_TAG, "Table " + TABELA_PRODUKT + " ver." + DB_WERSJA + " created");
@@ -85,39 +83,6 @@ public class BazaDanych extends SQLiteOpenHelper {
 
         onCreate(db);
     }
-
-
-//    public void dodajUzytkownika(String email, String haslo) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//
-//        ContentValues values = new ContentValues();
-//        values.put(EMAIL, email);
-//        values.put(HASLO, haslo);
-//
-//        db.insert(TABELA_USER, null, values);
-//        db.close();
-//    }
-//
-//    public boolean pobierzUzytkownika(String email, String haslo) {
-//
-//        String selectQuery = "select * from  " + TABELA_USER + " where " +
-//                EMAIL + " = " + "'" + email + "'" + " and " + HASLO + " = " + "'" + haslo + "'";
-//
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor cursor = db.rawQuery(selectQuery, null);
-//
-//        cursor.moveToFirst();
-//        if (cursor.getCount() > 0) {
-//            return true;
-//        }
-//
-//        cursor.close();
-//        db.close();
-//
-//        return false;
-//    }
-
-
 }
 
 

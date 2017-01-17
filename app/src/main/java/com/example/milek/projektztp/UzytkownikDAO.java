@@ -12,8 +12,6 @@ public interface UzytkownikDAO {
 
     public void open();
 
-    public void openToWrite();
-
     public void close();
 
     public long dodajUzytkownika(String email, String haslo);

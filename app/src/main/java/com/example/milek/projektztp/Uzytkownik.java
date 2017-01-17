@@ -21,11 +21,6 @@ public class Uzytkownik implements Serializable {
         this.haslo = haslo;
     }
 
-    public Uzytkownik(String email, String haslo) {
-        this.email = email;
-        this.haslo = haslo;
-    }
-
     public int getId() {
         return id;
     }

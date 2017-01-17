@@ -2,7 +2,6 @@ package com.example.milek.projektztp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,59 +9,54 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import static com.example.milek.projektztp.R.id.btnPromo;
+
 public class MainActivity extends AppCompatActivity {
 
 
-    private Button produkty, herbaty, koszyk, promo, los;
-    //private Promocja aktualnaPromocja = new Promocja();
-
-    private Sesja sesja;
+    private Button produkty, herbaty, koszyk, promo;
+    private Sesja mSessja;
     private ArrayList<Produkt> kosz = new ArrayList<Produkt>();
     private UzytkownikDAO u;
-    BazaDanych baza = BazaDanych.PobierzBazeDanych(this, "baza.db", null, 1);
-    Promocja aktualnaPromocja;
-
+    private Promocja aktualnaPromocja;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        sesja = new Sesja(this);
+        mSessja = new Sesja(this);
 
-        if (sesja.loggedin()) {
+        //jeśli użytkownik jest zalogowany
+        if (mSessja.loggedin()) {
 
             aktualnaPromocja = ((MyApplication) getApplication()).pobierzPromocje();
             u = ((MyApplication) getApplication()).pobierzUsera();
 
             aktualnaPromocja.zrobPromocje(23);
-            Log.d("SPRAWDZAM: ", String.valueOf(aktualnaPromocja.pobierzZnizke()));
             aktualnaPromocja.powiadomObserwatorow();
-            ((MyApplication)getApplication()).zapiszPromocje(aktualnaPromocja);
-            Log.d("SPRAWDZAM: ", String.valueOf(u.zwrocZnizke()));
 
             ((MyApplication) getApplication()).zapiszUsera(u);
             ((MyApplication) getApplication()).zapiszPromocje(aktualnaPromocja);
         }
 
-
-
         produkty = (Button) findViewById(R.id.buttonProdukty);
         herbaty = (Button) findViewById(R.id.buttonHerbaty);
         koszyk = (Button) findViewById(R.id.buttonKoszyk);
+        promo = (Button) findViewById(btnPromo);
 
-        addListenerOnButtonProdukty();
-        addListenerOnButtonHerbaty();
-        addListenerOnButtonKoszyk();
+        dodajListenerProdukty();
+        dodajListenerHerbaty();
+        dodajListenerKoszyk();
+        dodajListenerPromocje();
 
-//        if (!sesja.loggedin()) {
-//            logout();
-//        }
-
+        //dostępność przycisku promocje
+        if (mSessja.loggedin()) {
+            promo.setEnabled(true);
+        }
     }
 
     @Override
@@ -80,27 +74,24 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent2);
                 break;
             case R.id.logout:
-                logout();
-                break;
-            case R.id.promocja:
-                idzDoMojePromocje(this.findViewById(R.id.promocja));
-                break;
-            case R.id.onas:
+                wyloguj();
+                finish();
+                startActivity(getIntent());
                 break;
             default:
                 return super.onOptionsItemSelected(item);
         }
-
         return super.onOptionsItemSelected(item);
     }
 
-    private void logout() {
-
-        sesja.setLoggedin(false);
+    private void wyloguj() {
+        mSessja.setLoggedin(false);
         Toast.makeText(this, "Zaloguj się", Toast.LENGTH_SHORT).show();
+        finish();
+        startActivity(getIntent());
     }
 
-    public void addListenerOnButtonProdukty() {
+    public void dodajListenerProdukty() {
         final Context context = this;
         produkty.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void addListenerOnButtonHerbaty() {
+    public void dodajListenerHerbaty() {
         final Context context = this;
         herbaty.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void addListenerOnButtonKoszyk() {
+    public void dodajListenerKoszyk() {
         final Context context = this;
         koszyk.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,10 +127,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-    public void idzDoMojePromocje(View view) {
-        Intent intent = new Intent(this, MojePromocje.class);
-        startActivity(intent);
+    public void dodajListenerPromocje() {
+        final Context context = this;
+        promo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = new Intent(context, MojePromocje.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }

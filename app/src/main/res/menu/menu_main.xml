@@ -15,14 +15,4 @@
         android:icon="@drawable/logout"
         android:orderInCategory="2"
         app:showAsAction="ifRoom|withText"/>
-    <item
-        android:id="@+id/promocja"
-        android:title="Promocje"
-        android:orderInCategory="3"
-        app:showAsAction="never"/>
-    <item
-        android:id="@+id/onas"
-        android:title="O nas"
-        android:orderInCategory="3"
-        app:showAsAction="never"/>
 </menu>

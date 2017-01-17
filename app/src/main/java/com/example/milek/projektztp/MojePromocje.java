@@ -6,25 +6,24 @@ import android.widget.TextView;
 
 public class MojePromocje extends AppCompatActivity {
 
-    private Sesja sesja;
-    private TextView txt;
-    private UzytkownikDAO u;
-    BazaDanych baza = BazaDanych.PobierzBazeDanych(this, "baza.db", null, 1);
+    private Sesja mSesja;
+    private TextView mTekst;
+    private UzytkownikDAO uzytkownik;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_moje_promocje);
 
-        sesja = new Sesja(this);
-        if (!sesja.loggedin()) {
+        mSesja = new Sesja(this);
+        if (!mSesja.loggedin()) {
             finish();
         }
 
-        u = ((MyApplication) getApplication()).pobierzUsera();
+        uzytkownik = ((MyApplication) getApplication()).pobierzUsera();
 
-        txt = (TextView) findViewById(R.id.textView6);
-        txt.setText("Twoja zniżka wynosi obecnie " + String.valueOf(u.zwrocZnizke()) + "%");
+        mTekst = (TextView) findViewById(R.id.textView6);
+        mTekst.setText("Twoja zniżka wynosi obecnie " + String.valueOf(uzytkownik.zwrocZnizke()) + "%");
 
     }
 }

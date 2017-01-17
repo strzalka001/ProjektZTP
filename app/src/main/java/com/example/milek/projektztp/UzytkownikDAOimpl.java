@@ -47,10 +47,6 @@ public class UzytkownikDAOimpl implements UzytkownikDAO, Serializable {
         }
     }
 
-    public void openToWrite() {
-        db = baza.getWritableDatabase();
-    }
-
     public void close() {
         baza.close();
     }

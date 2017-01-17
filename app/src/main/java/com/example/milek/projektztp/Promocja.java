@@ -9,18 +9,8 @@ import java.util.Random;
 
 public class Promocja implements IPromocja {
 
-
-    private int znizkaPromo = 1;
+    private int mZnizka = 1;
     private ArrayList<UzytkownikDAO> listaUzytkownikow = new ArrayList<>();
-    private static volatile Promocja mPromocja = null;
-
-
-//    public static Promocja pobierzNowaPromocje(){
-//        if (mPromocja == null) {
-//            mPromocja = new Promocja();
-//            return mPromocja;
-//        } else return mPromocja;
-//    }
 
     public Promocja() {
 
@@ -43,12 +33,10 @@ public class Promocja implements IPromocja {
     }
 
     public void zrobPromocje(int a) {
-        Random random = new Random();
-        //this.znizkaPromo = random.nextInt((20 - 5) + 1)-5;
-        this.znizkaPromo = a;
+        this.mZnizka = a;
     }
 
     public int pobierzZnizke() {
-        return znizkaPromo;
+        return mZnizka;
     }
 }
