@@ -68,9 +68,9 @@ public class Rejestracja extends AppCompatActivity {
         haslo = etPass.getText().toString();
         //Log.d("Email: ", email + " " + haslo);
 
-        if (email.isEmpty() || haslo.isEmpty()) {
-            wyswietlToast("Uzupełnij wszystkie pola");
-        } else {
+        if (email.isEmpty() || haslo.isEmpty() || !sprawdzMaila(email)) {
+            wyswietlToast("Uzupełnij poprawnie wszystkie pola");
+        }else {
             db.dodajUzytkownika(email, haslo);
             promo.dodajObserwatora(db);
             ((MyApplication)getApplication()).zapiszPromocje(promo);
@@ -83,5 +83,12 @@ public class Rejestracja extends AppCompatActivity {
 
     private void wyswietlToast(String komunikat) {
         Toast.makeText(getApplicationContext(), komunikat, Toast.LENGTH_SHORT).show();
+    }
+
+    public boolean sprawdzMaila(String email) {
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        return m.matches();
     }
 }
