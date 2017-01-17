@@ -35,23 +35,17 @@ public class BazaDanych extends SQLiteOpenHelper {
     private static final String USUN_TABELA_USER =
             "DROP TABLE IF EXISTS " + TABELA_USER;
 
-    String UTWORZ_TABELA_PRODUKT = "CREATE TABLE " + TABELA_PRODUKT + "("
+    private static final String UTWORZ_TABELA_PRODUKT = "CREATE TABLE " + TABELA_PRODUKT + "("
             + PRODUKT_ID + " INTEGER PRIMARY KEY," + PRODUKT_NAZWA + " TEXT,"
             + PRODUKT_CENA + " TEXT," + PRODUKT_OPIS + " TEXT" + ");";
 
-    String USUN_TABELA_PRODUKT =
+    private static final String USUN_TABELA_PRODUKT =
             "DROP TABLE IF EXISTS " + TABELA_PRODUKT;
 
 
     private BazaDanych(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
-
-
-//    public BazaDanych(Context context) {
-//        super(context, DB_NAZWA, null, DB_WERSJA);
-//    }
-
 
     public static BazaDanych PobierzBazeDanych(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         if (bazadanych == null) {

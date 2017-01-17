@@ -16,7 +16,7 @@ import java.util.List;
  * Created by Milek on 2017-01-04.
  */
 
-public class ListaAdapter  extends ArrayAdapter<Produkt> {
+public class ListaAdapter extends ArrayAdapter<Produkt> {
 
     List<Produkt> mylist;
     private final Context context;
@@ -31,12 +31,10 @@ public class ListaAdapter  extends ArrayAdapter<Produkt> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-
         convertView = new LinearLayout(getContext());
         String inflater = Context.LAYOUT_INFLATER_SERVICE;
-        LayoutInflater vi = (LayoutInflater)getContext().getSystemService(inflater);
+        LayoutInflater vi = (LayoutInflater) getContext().getSystemService(inflater);
         convertView = vi.inflate(R.layout.lista_produkty, parent, false);
-
 
 
         // Product object
@@ -50,15 +48,8 @@ public class ListaAdapter  extends ArrayAdapter<Produkt> {
         TextView txtDesc = (TextView) convertView.findViewById(R.id.opis);
         txtDesc.setText(product.getOpis());
 
-        // show image
-        //ImageView img = (ImageView)convertView.findViewById(R.id.image);
-
-        // download image
-        //img.setImageResource(product.img_url);
-
         return convertView;
     }
-
 
 
 }

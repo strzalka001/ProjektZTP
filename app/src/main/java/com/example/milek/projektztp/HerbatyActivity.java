@@ -54,121 +54,121 @@ public class HerbatyActivity extends AppCompatActivity {
                     h3 = new HerbataCzarna();
                 }
 
-                if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Czekolada") == 0 && kulki.compareTo("Brak") == 0) {
+               else if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Czekolada") == 0 && kulki.compareTo("Brak") == 0) {
                     h3 = new SyropCzekolada(new HerbataCzarna());
                 }
 
-                if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Liczi") == 0 && kulki.compareTo("Brak") == 0) {
+                else if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Liczi") == 0 && kulki.compareTo("Brak") == 0) {
                     h3 = new SyropLiczi(new HerbataCzarna());
                 }
 
-                if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Wanilia") == 0 && kulki.compareTo("Brak") == 0) {
+                else if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Wanilia") == 0 && kulki.compareTo("Brak") == 0) {
                     h3 = new SyropWanilia(new HerbataCzarna());
                 }
 
-                if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Mango") == 0 && kulki.compareTo("Brak") == 0) {
+                else  if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Mango") == 0 && kulki.compareTo("Brak") == 0) {
                     h3 = new SyropMango(new HerbataCzarna());
                 }
 
-                if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Brak") == 0 && kulki.compareTo("Tapioka") == 0) {
+                else if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Brak") == 0 && kulki.compareTo("Tapioka") == 0) {
                     h3 = new KulkiTapioka(new HerbataCzarna());
                 }
 
-                if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Brak") == 0 && kulki.compareTo("Truskawka") == 0) {
+                else  if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Brak") == 0 && kulki.compareTo("Truskawka") == 0) {
                     h3 = new KulkiTruskawka(new HerbataCzarna());
                 }
 /////////
-                if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Czekolada") == 0 && kulki.compareTo("Tapioka") == 0) {
+                else if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Czekolada") == 0 && kulki.compareTo("Tapioka") == 0) {
                     h3 = new KulkiTapioka(new SyropCzekolada(new HerbataCzarna()));
                 }
 
-                if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Liczi") == 0 && kulki.compareTo("Tapioka") == 0) {
+                else if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Liczi") == 0 && kulki.compareTo("Tapioka") == 0) {
                     h3 = new KulkiTapioka(new SyropLiczi(new HerbataCzarna()));
                 }
 
-                if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Wanilia") == 0 && kulki.compareTo("Tapioka") == 0) {
+                else  if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Wanilia") == 0 && kulki.compareTo("Tapioka") == 0) {
                     h3 = new KulkiTapioka(new SyropWanilia(new HerbataCzarna()));
                 }
 
-                if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Mango") == 0 && kulki.compareTo("Tapioka") == 0) {
+                else  if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Mango") == 0 && kulki.compareTo("Tapioka") == 0) {
                     h3 = new KulkiTapioka(new SyropMango(new HerbataCzarna()));
                 }
 //////////
-                if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Czekolada") == 0 && kulki.compareTo("Truskawka") == 0) {
+                else  if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Czekolada") == 0 && kulki.compareTo("Truskawka") == 0) {
                     h3 = new KulkiTruskawka(new SyropCzekolada(new HerbataCzarna()));
                 }
 
-                if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Liczi") == 0 && kulki.compareTo("Truskawka") == 0) {
+                else  if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Liczi") == 0 && kulki.compareTo("Truskawka") == 0) {
                     h3 = new KulkiTruskawka(new SyropLiczi(new HerbataCzarna()));
                 }
 
-                if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Wanilia") == 0 && kulki.compareTo("Truskawka") == 0) {
+                else  if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Wanilia") == 0 && kulki.compareTo("Truskawka") == 0) {
                     h3 = new KulkiTruskawka(new SyropWanilia(new HerbataCzarna()));
                 }
 
-                if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Mango") == 0 && kulki.compareTo("Truskawka") == 0) {
+                else if (rodzaj.compareTo("Czarna") == 0 && syrop.compareTo("Mango") == 0 && kulki.compareTo("Truskawka") == 0) {
                     h3 = new KulkiTruskawka(new SyropMango(new HerbataCzarna()));
                 }
 
                 //herbata zielona
 
-                if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Brak") == 0 && kulki.compareTo("Brak") == 0) {
+                else  if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Brak") == 0 && kulki.compareTo("Brak") == 0) {
                     h3 = new HerbataZielona();
                 }
 
-                if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Czekolada") == 0 && kulki.compareTo("Brak") == 0) {
+                else  if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Czekolada") == 0 && kulki.compareTo("Brak") == 0) {
                     h3 = new SyropCzekolada(new HerbataZielona());
                 }
 
-                if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Liczi") == 0 && kulki.compareTo("Brak") == 0) {
+                else if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Liczi") == 0 && kulki.compareTo("Brak") == 0) {
                     h3 = new SyropLiczi(new HerbataZielona());
                 }
 
-                if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Wanilia") == 0 && kulki.compareTo("Brak") == 0) {
+                else  if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Wanilia") == 0 && kulki.compareTo("Brak") == 0) {
                     h3 = new SyropWanilia(new HerbataZielona());
                 }
 
-                if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Mango") == 0 && kulki.compareTo("Brak") == 0) {
+                else  if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Mango") == 0 && kulki.compareTo("Brak") == 0) {
                     h3 = new SyropMango(new HerbataZielona());
                 }
 
-                if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Brak") == 0 && kulki.compareTo("Tapioka") == 0) {
+                else  if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Brak") == 0 && kulki.compareTo("Tapioka") == 0) {
                     h3 = new KulkiTapioka(new HerbataZielona());
                 }
 
-                if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Brak") == 0 && kulki.compareTo("Truskawka") == 0) {
+                else  if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Brak") == 0 && kulki.compareTo("Truskawka") == 0) {
                     h3 = new KulkiTruskawka(new HerbataZielona());
                 }
 /////////
-                if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Czekolada") == 0 && kulki.compareTo("Tapioka") == 0) {
+                else  if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Czekolada") == 0 && kulki.compareTo("Tapioka") == 0) {
                     h3 = new KulkiTapioka(new SyropCzekolada(new HerbataZielona()));
                 }
 
-                if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Liczi") == 0 && kulki.compareTo("Tapioka") == 0) {
+                else  if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Liczi") == 0 && kulki.compareTo("Tapioka") == 0) {
                     h3 = new KulkiTapioka(new SyropLiczi(new HerbataZielona()));
                 }
 
-                if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Wanilia") == 0 && kulki.compareTo("Tapioka") == 0) {
+                else  if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Wanilia") == 0 && kulki.compareTo("Tapioka") == 0) {
                     h3 = new KulkiTapioka(new SyropWanilia(new HerbataZielona()));
                 }
 
-                if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Mango") == 0 && kulki.compareTo("Tapioka") == 0) {
+                else  if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Mango") == 0 && kulki.compareTo("Tapioka") == 0) {
                     h3 = new KulkiTapioka(new SyropMango(new HerbataZielona()));
                 }
 //////////
-                if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Czekolada") == 0 && kulki.compareTo("Truskawka") == 0) {
+                else  if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Czekolada") == 0 && kulki.compareTo("Truskawka") == 0) {
                     h3 = new KulkiTruskawka(new SyropCzekolada(new HerbataZielona()));
                 }
 
-                if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Liczi") == 0 && kulki.compareTo("Truskawka") == 0) {
+                else   if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Liczi") == 0 && kulki.compareTo("Truskawka") == 0) {
                     h3 = new KulkiTruskawka(new SyropLiczi(new HerbataZielona()));
                 }
 
-                if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Wanilia") == 0 && kulki.compareTo("Truskawka") == 0) {
+                else  if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Wanilia") == 0 && kulki.compareTo("Truskawka") == 0) {
                     h3 = new KulkiTruskawka(new SyropWanilia(new HerbataZielona()));
                 }
 
-                if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Mango") == 0 && kulki.compareTo("Truskawka") == 0) {
+                else  if (rodzaj.compareTo("Zielona") == 0 && syrop.compareTo("Mango") == 0 && kulki.compareTo("Truskawka") == 0) {
                     h3 = new KulkiTruskawka(new SyropMango(new HerbataZielona()));
                 }
 

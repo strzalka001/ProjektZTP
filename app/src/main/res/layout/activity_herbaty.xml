@@ -112,15 +112,27 @@
         android:layout_marginStart="41dp"
         android:enabled="false"/>
 
+    <!--<TextView-->
+        <!--android:text="Skomponuj własną herbatę:"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textSize="20dp"-->
+        <!--android:id="@+id/textView2"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_toRightOf="@+id/kompozycja"-->
+        <!--android:layout_toEndOf="@+id/kompozycja" />-->
+
     <TextView
         android:text="Skomponuj własną herbatę:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#3473A0"
         android:textSize="20dp"
         android:id="@+id/textView2"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="24dp"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/kompozycja"
-        android:layout_toEndOf="@+id/kompozycja" />
+        />
 
 
 </RelativeLayout>

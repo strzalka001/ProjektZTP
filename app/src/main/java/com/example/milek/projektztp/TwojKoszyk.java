@@ -17,4 +17,12 @@ public class TwojKoszyk {
         return koszyk;
     }
 
+
+
+
+    public static void WyczyscKoszyk() {
+        koszyk.clear();
+
+
+    }
 }

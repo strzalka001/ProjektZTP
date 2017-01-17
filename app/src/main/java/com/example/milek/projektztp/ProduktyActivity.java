@@ -22,13 +22,15 @@ public class ProduktyActivity extends AppCompatActivity {
     private ProduktDAO db;
     private Button DodajDoKoszyka, ZobaczKoszyk, ProduktyDnia;
     private Produkt product= new Produkt("nazwa", 5, "opis");
-    private BazaDanych baza = BazaDanych.PobierzBazeDanych(this, "baza.db", null, 1);
+    private BazaDanych baza;
     private Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_produkty);
+        baza = BazaDanych.PobierzBazeDanych(this, "baza.db", null, 1);
+
         DodajDoKoszyka = (Button) findViewById(R.id.buttonDodajDoKoszykZProduktow);
         ZobaczKoszyk = (Button) findViewById(R.id.buttonKoszykZProduktow);
         ProduktyDnia = (Button) findViewById(R.id.buttonProduktyDnia);

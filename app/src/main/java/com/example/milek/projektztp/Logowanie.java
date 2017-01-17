@@ -41,6 +41,9 @@ public class Logowanie extends AppCompatActivity {
         dodajListenerRejestracja();
         dodajListenerLogowanie();
 
+        TwojKoszyk.WyczyscKoszyk();
+
+
         if (sesja.loggedin()) {
             finish();
         }

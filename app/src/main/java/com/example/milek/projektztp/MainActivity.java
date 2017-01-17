@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void wyloguj() {
         mSessja.setLoggedin(false);
+        TwojKoszyk.WyczyscKoszyk();
         Toast.makeText(this, "Zaloguj się", Toast.LENGTH_SHORT).show();
         finish();
         startActivity(getIntent());
