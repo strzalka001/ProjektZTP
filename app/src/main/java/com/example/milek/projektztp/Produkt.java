@@ -5,10 +5,10 @@ import java.io.Serializable;
 
 public class Produkt implements Serializable {
 
-    public int id;
-    public String nazwa;
-    public float cena;
-    public String opis;
+    private int id;
+    private String nazwa;
+    private float cena;
+    private String opis;
 
     public Produkt() {
     }

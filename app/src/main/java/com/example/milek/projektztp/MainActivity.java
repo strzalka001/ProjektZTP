@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     public void idzDoMojePromocje(View view) {
         Intent intent = new Intent(this, MojePromocje.class);
         startActivity(intent);

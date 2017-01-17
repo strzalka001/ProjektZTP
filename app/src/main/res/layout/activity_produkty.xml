@@ -33,26 +33,37 @@
         android:layout_marginStart="40dp"
         android:id="@+id/buttonKoszykZProduktow" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonDodajDoKoszykZProduktow"
-        android:enabled="false"
-        android:text="Dodaj do koszyka"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="37dp" />
-
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="315dp"
+        android:layout_height="250dp"
         android:id="@+id/lista_produktow"
 
         android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="13dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonDodajDoKoszykZProduktow"
+        android:enabled="false"
+        android:text="Dodaj do koszyka"
+        android:layout_marginTop="21dp"
+        android:layout_below="@+id/lista_produktow"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="dzisiejsze herbaty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonProduktyDnia"
+        android:layout_below="@+id/buttonKoszykZProduktow"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/buttonKoszykZProduktow"
+        android:layout_alignEnd="@+id/buttonKoszykZProduktow" />
 
 
 </RelativeLayout>
