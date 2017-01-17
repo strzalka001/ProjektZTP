@@ -42,9 +42,9 @@ public class ProduktyActivity extends AppCompatActivity {
 
         db = new ProduktDAOimpl(this,baza);
         db.open();
-        for (Produkt i : db.pobierzListeProduktow()) {
-            db.usunProdukt(i.id);
-        }
+//        for (Produkt i : db.pobierzListeProduktow()) {
+//            db.usunProdukt(i.id);
+//        }
 
         db.dodajProdukt("Jaśminowa kiwi", 7.4f , "Orzeźwiający napój na bazie zielonej herbaty jaśminowej o smaku kiwi");
         db.dodajProdukt("Czarna brzoskwinia", 8.3f , "Herbata czarna z brzoskwinią z żelkami winogronowymi");

@@ -17,7 +17,7 @@ public class Logowanie extends AppCompatActivity {
     private TextView tvReg;
     private String email, haslo;
     private Sesja sesja;
-    UzytkownikDAO db;
+    UzytkownikDAO db,db2;
     BazaDanych baza = BazaDanych.PobierzBazeDanych(this, "baza.db", null, 1);
     Promocja promo;
 
@@ -28,9 +28,14 @@ public class Logowanie extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logowanie);
 
-        promo = ((MyApplication)getApplication()).pobierzPromocje();
+        promo = new Promocja();
+
+        //promo = ((MyApplication)getApplication()).pobierzPromocje();
         db = new UzytkownikDAOimpl(this, baza, promo);
+        db2 = new UzytkownikDAOimpl(this, baza, promo);
+
         db.open();
+        //db2.open();
 
         sesja = new Sesja(this);
         login = (Button) findViewById(R.id.btnLogin);
@@ -71,7 +76,10 @@ public class Logowanie extends AppCompatActivity {
 
         if (db.pobierzUzytkownika(email, haslo)) {
             sesja.setLoggedin(true);
+            promo.dodajObserwatora(db);
             ((MyApplication)getApplication()).zapiszUsera(db);
+            ((MyApplication)getApplication()).zapiszPromocje(promo);
+
             Toast.makeText(getApplicationContext(), "Zalogowano", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(Logowanie.this, MainActivity.class));
             finish();
